@@ -1,0 +1,82 @@
+.review-order-table.mat-table {
+    display: block;
+    overflow-x:auto;
+    .mat-row, .mat-header-row {
+        display: flex;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 24px;
+        min-width: 760px;
+    }
+    .mat-row{
+        min-height: 60px;
+    }
+    .mat-cell, .mat-header-cell {
+        flex: 1;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+    .mat-header-cell {
+        font-size: 14px;
+    }
+    .mat-cell{
+        img{
+            width: 60px;
+        }
+    }
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+modal {
+    
+    display: none;
+
+    .modal {
+     
+        position: fixed;
+        top: 10px;
+        right: 230px;
+        bottom: 10px;
+        left:230px;
+
+       
+        z-index: 1000;
+        
+       
+        overflow: auto;
+
+        .modal-body {
+            padding: 40px;
+            background: #fff;
+
+       
+            margin: 40px;
+        }
+    }
+
+    .modal-background {
+       
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+       
+        background-color: #000;
+        opacity: 0.75;
+        
+       
+        z-index: 900;
+    }
+}
+
+body.modal-open {
+
+    overflow: hidden;
+}

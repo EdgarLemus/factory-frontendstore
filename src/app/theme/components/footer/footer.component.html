@@ -1,0 +1,49 @@
+<footer class="bg-primary footer">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between" class="py-3 border-bottom-mute theme-container">        
+        <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.sm="40"> 
+            <h3 class="col-title">ENLACES ÚTILES</h3>
+            <p class="mt-2"><a href="javascript:void(0);" class="link secondary-color">Mi Cuenta</a></p>
+            <p class="mt-1"><a routerLink="/contact" class="link secondary-color">Cont&aacute;ctanos</a></p>
+            <p class="mt-1"><a routerLink="/compare" class="link secondary-color">Comparar</a></p>
+            <p class="mt-1"><a routerLink="/wishlist" class="link secondary-color">Lista de Deseo</a></p>
+            <p class="mt-1"><a routerLink="/checkout" class="link secondary-color">Pago</a></p>
+            <p class="mt-1"><a href="javascript:void(0);" class="link secondary-color">FAQ</a></p>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.sm="60" ngClass.xs="mt-2"> 
+            <h3 class="col-title">INFORMACI&Oacute;N DE CONTACTO</h3>            
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-2 secondary-color">
+                <mat-icon class="mr-1">location_on</mat-icon>
+                <span>Carrera 11 No. 71 - 73 Of. 404, Bogotá</span>
+            </p>
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
+                <mat-icon class="mr-1">call</mat-icon>
+                <span>+(57) 1 743 3001</span>
+            </p>
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
+                <mat-icon class="mr-1">mail_outline</mat-icon>
+                <span>contacto@sophossolutions.com</span>
+            </p>
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
+                <mat-icon class="mr-1">schedule</mat-icon>
+                <span>Lun - Vier / 8:00AM - 6:00PM</span>
+            </p>
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
+                <mat-icon class="mr-1">directions</mat-icon>
+                <a href="javascript:void(0);" class="link secondary-color">Obtener indicaciones</a>
+            </p>
+            <p fxLayout="row" fxLayoutAlign="start center" class="mt-1 secondary-color">
+                <mat-icon class="mr-1">directions_bus</mat-icon>
+                <span>Rutas a Colombia</span>
+            </p>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2"> 
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true">
+                <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="copyright secondary-color theme-container">
+        <p ngClass.xs="mt-1">2019 Sophos Solutions S.A.S. © All rights reserved</p>
+        <p>Diseñado por:<a mat-button href="http://themeseason.com/" target="_blank">ThemeSeason</a></p>
+    </div>
+</footer>

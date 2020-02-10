@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+<mat-card>
+    <div>
+        <div  class="p-2">
+            <h2 class="text-muted text-center">Ingresar</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+                <mat-form-field class="w-100 mt-2">
+                    <input matInput placeholder="Usuario" formControlName="user" required>
+                    <mat-error *ngIf="loginForm.controls.user.errors?.required">El Usuario es requerido</mat-error>
+                    <mat-error *ngIf="loginForm.controls.user.hasError('minlength')">El Usuario es Invalido</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 mt-1">
+                    <input matInput placeholder="Password" type="password" formControlName="password" required>
+                    <mat-error *ngIf="loginForm.controls.password.errors?.required">Contraseña es requerida</mat-error>
+                    <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">La contrase&tilde;a no es lo suficientemente larga, el m&iacute;nimo es de 8 caracteres</mat-error>
+                </mat-form-field> 
+                <div class="text-center mt-2">
+                    <button mat-fab color="primary" class="mat-elevation-z6">
+                        <mat-icon>exit_to_app</mat-icon>
+                    </button>
+                </div> 
+            </form>
+        </div>
+    </div> 
+</mat-card>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cerrar</button>
+    <button mat-button (click)="register()" cdkFocusInitial>Registrarme</button>
+  </div>

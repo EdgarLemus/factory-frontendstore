@@ -1,0 +1,64 @@
+<app-main-carousel [slides]="slides"></app-main-carousel> 
+
+<div fxLayout="row wrap" class="info-bar">
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
+            <div class="content">
+                <p>BONUS ADICIONAL</p> 
+                <span class="text-muted m-0">Divi&eacute;rtete comprando y colecciona bonificaciones</span>
+            </div> 
+        </mat-card> 
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50"> 
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon>
+            <div class="content">
+                <p>ENV&Iacute;O GRATIS</p> 
+                <span class="text-muted m-0">
+                    Env&iacute;o gratis en todos los pedidos superiores a $ 99</span>
+            </div> 
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50"> 
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg text-muted m-0">monetization_on</mat-icon>
+            <div class="content">
+                <p>GARANT&Iacute;A DE REEMBOLSO</p> 
+                <span class="text-muted m-0">Garant&iacute;a de devoluci&oacute;n de dinero de 30 d&iacute;as</span>
+            </div> 
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50"> 
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
+            <div class="content">
+                <p>SOPORTE EN L&Iacute;NEA 24/7</p> 
+                <span class="text-muted m-0">
+                    Ll&aacute;manos: +(57) 1 743 3001</span>
+            </div> 
+        </mat-card>
+    </div>
+</div>
+
+<app-banners [banners]="banners"></app-banners>
+
+<div class="products-tabs">  
+
+    <mat-tab-group mat-stretch-tabs (selectedTabChange)="onLinkClick($event)">
+       
+        <mat-tab label="Celulares">           
+           <app-products-carousel [products]="products"></app-products-carousel>
+        </mat-tab>
+        <mat-tab label="Audio">
+           <app-products-carousel [products]="products"></app-products-carousel>
+        </mat-tab>
+        <mat-tab label="Accesorios">
+            <app-products-carousel [products]="products"></app-products-carousel>
+        </mat-tab>
+        
+    </mat-tab-group> 
+
+</div>
+
+<app-brands-carousel [brands]="brands"></app-brands-carousel> 

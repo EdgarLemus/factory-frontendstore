@@ -1,0 +1,8 @@
+[
+    { "title": "Nuevos Computadores", "subtitle": "Desde $1.299.000", "image": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-0.3.5&s=a8ef3fd4a48693a0620b614a6209b687&auto=format&fit=crop&w=750&q=80" },
+    { "title": "Nuevos Teléfonos Celulares", "subtitle": "Oferta especial", "image": "https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80" },
+    { "title": "Nueva Colección en accesorios", "subtitle": "Primavera y verano", "image": "assets/images/coleccion/1-accesorios.jpg" },
+    { "title": "Colección de verano en celulares", "subtitle": "Nuevos en oferta", "image": "assets/images/coleccion/1-verano.jpg"},
+    { "title": "Accesorios para tí", "subtitle": "Desde $89.000", "image": "assets/images/coleccion/2-accesorios.jpg" },
+    { "title": "Marcas de audio Reconocidas", "subtitle": "Desde $179.900", "image": "assets/images/coleccion/1-audio.jpg" }
+]

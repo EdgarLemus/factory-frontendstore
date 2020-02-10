@@ -1,0 +1,42 @@
+<mat-chip-list *ngIf="appService.Data.wishList.length == 0">
+    <mat-chip color="warn" selected="true">NO TIENES ITEMS EN TU LISTA DE DESEOS.</mat-chip>
+</mat-chip-list>
+
+<mat-card *ngIf="appService.Data.wishList?.length > 0" class="p-0">
+
+  <div class="mat-table wishlist-table">
+    <div class="mat-header-row">
+      <div class="mat-header-cell">Producto</div>
+      <div class="mat-header-cell">Nombre</div>
+      <div class="mat-header-cell">Precio</div>
+      <div class="mat-header-cell">Disponibilidad</div>
+      <div class="mat-header-cell">Cantidad</div>
+      <div class="mat-header-cell">
+        <div class="px-1">
+          <button mat-raised-button color="warn" (click)="clear()">Limpiar</button>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let product of appService.Data.wishList" class="mat-row">
+      <div class="mat-cell"><img width="100" height="100" [src]="'/assets/images/catalog/'+product.images[0].small"></div>
+      <div class="mat-cell"><a [routerLink]="['/products', product._id, product.name]" class="product-name">{{product.name}}</a></div>
+      <div class="mat-cell">${{product.newPrice | number : '1.2-2'}}</div>
+      <div class="mat-cell">{{ (product.availibilityCount > 0) ? 'In stock':'Unavailable'}}</div>
+      <div class="mat-cell text-muted">
+        <app-controls [product]="product" [type]="'wish'" (onQuantityChange)="getQuantity($event)"></app-controls>
+      </div>
+      <div class="mat-cell">
+        <div class="p-1">          
+          <button mat-mini-fab color="primary" (click)="addToCart(product)" matTooltip="A&ntilde;adir al Carrito">
+              <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" (click)="remove(product)" matTooltip="Clear" class="Eliminar">
+              <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</mat-card>

@@ -1,0 +1,10 @@
+{
+    "statusCode": "0001",
+    "statusMessage": "Consulta Exitosa",
+    "categories":[
+        { "id": 1, "name": "Todas las Categorias", "hasSubCategory": false, "parentId": 0 },
+        { "id": 2, "name": "Celulares", "hasSubCategory": false, "parentId": 0 },
+        { "id": 3, "name": "Audio", "hasSubCategory": false, "parentId": 0 },
+        { "id": 4, "name": "Accesorios", "hasSubCategory": false, "parentId": 0 }
+    ]
+}

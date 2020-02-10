@@ -1,0 +1,45 @@
+<div mat-dialog-content>
+  <mat-card>
+      <div>
+          <div  class="p-2">
+              <h2 class="text-muted text-center">Registrar Usuario</h2>
+              <form [formGroup]="loginForm" (ngSubmit)="onCreateFormSubmit()">
+                  <mat-form-field class="w-100">
+                      <input matInput placeholder="Usuario" formControlName="user" required>
+                      <mat-error *ngIf="loginForm.controls.user.errors?.required">El Usuario es requerido</mat-error>
+                      <mat-error *ngIf="loginForm.controls.user.hasError('minlength')">El Usuario es Invalido</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="w-100">
+                    <input *ngIf="showDocument" matInput placeholder="Documento" formControlName="document">
+                    <input *ngIf="!showDocument" matInput placeholder="Documento" formControlName="document" required>
+                    <mat-error *ngIf="loginForm.controls.document.errors?.required">El Documento es requerido</mat-error>
+                    <mat-error *ngIf="loginForm.controls.document.hasError('minlength')">El Documento es Invalido</mat-error>
+                </mat-form-field>
+                  <mat-form-field class="w-100">
+                      <input matInput placeholder="Password" type="password" formControlName="password" required>
+                      <mat-error *ngIf="loginForm.controls.password.errors?.required">Contraseña es requerida</mat-error>
+                      <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">La contrase&tilde;a no es lo suficientemente larga, el m&iacute;nimo es de 8 caracteres</mat-error>
+                  </mat-form-field> 
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Nombre" formControlName="firstName" required>
+                    <mat-error *ngIf="loginForm.controls.firstName.errors?.required">El Nombre es requerido</mat-error>
+                    <mat-error *ngIf="loginForm.controls.firstName.hasError('minlength')">El Nombre es Invalido</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="Apellido" formControlName="lastName" required>
+                  <mat-error *ngIf="loginForm.controls.lastName.errors?.required">El Apellido es requerido</mat-error>
+                  <mat-error *ngIf="loginForm.controls.lastName.hasError('minlength')">El Apellido es Invalido</mat-error>
+              </mat-form-field>
+                  <div class="text-center">
+                      <button mat-fab color="primary" class="mat-elevation-z4">
+                          <mat-icon>exit_to_app</mat-icon>
+                      </button>
+                  </div> 
+              </form>
+          </div>
+      </div> 
+  </mat-card>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cerrar</button>
+    </div>

@@ -1,0 +1,53 @@
+<div class="top-menu">
+
+    <span fxShow="false" fxShow.gt-sm>
+        <a mat-button routerLink="/compare">Comparar ({{appService.Data.compareList.length}})</a>
+        <a mat-button routerLink="/wishlist">Lista de deseo ({{appService.Data.wishList.length}})</a>
+    </span>
+
+    <a mat-button [matMenuTriggerFor]="accountMenu" #accountMenuTrigger="matMenuTrigger" (click)="changeValidateUser()">
+        <mat-icon class="mat-icon-sm account-icon">person</mat-icon> <span fxShow="false"
+            fxShow.gt-sm>Cuenta</span>
+        <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+    </a>
+    <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">
+        <span (mouseleave)="accountMenuTrigger.closeMenu()">
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="user-info"
+                *ngIf="authService.isAuthenticated()">
+                <img src="assets/images/others/user.jpg" alt="user-image" width="50">
+                <!--<p>{{profile.name}} <br> <small>{{profile.nickname}}(<mat-icon class="mat-icon-xs">star</mat-icon>
+                        )</small></p>-->
+                        <p>Perrin <br> <small>Perez(<mat-icon class="mat-icon-xs">star</mat-icon>
+                            )</small></p>
+            </div>
+            <div class="divider"></div>
+
+            <a mat-menu-item routerLink="/compare" *ngIf="authService.isAuthenticated()" >
+                <mat-icon class="mat-icon-sm">compare</mat-icon>
+                <span>Comparar ({{appService.Data.compareList.length}})</span>
+            </a>
+            <a mat-menu-item routerLink="/wishlist" *ngIf="authService.isAuthenticated()" >
+                <mat-icon class="mat-icon-sm">favorite</mat-icon>
+                <span>Lista de deseo ({{appService.Data.wishList.length}})</span>
+            </a>
+            <a mat-menu-item routerLink="/cart" *ngIf="authService.isAuthenticated()" >
+                <mat-icon class="mat-icon-sm">shopping_cart</mat-icon>
+                <span>Carrito de Compras ({{cartService.Data.products.length}})</span>
+            </a>
+            <a mat-menu-item routerLink="/" *ngIf="authService.isAuthenticated()">
+                <mat-icon class="mat-icon-sm">lock</mat-icon>
+                <span>Bloquear la pantalla</span>
+            </a>
+            <div class="divider"></div>
+            <a mat-menu-item (click)="login()" *ngIf="!authService.isAuthenticated()">
+                <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+                <span>Ingresar</span>
+            </a>
+            <a mat-menu-item (click)="logout()" *ngIf="authService.isAuthenticated()">
+                <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+                <span>Salir</span>
+            </a>
+        </span>
+    </mat-menu>
+
+</div>

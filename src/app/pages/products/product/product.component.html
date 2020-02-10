@@ -1,0 +1,180 @@
+<div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
+
+        <mat-card class="product-image">
+            <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md>
+                <mat-icon>fullscreen</mat-icon>
+            </button>
+            <!--<img *ngIf="image" [src]="'/assets/images/catalog/'+image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" />-->
+            <img *ngIf="image" [src]="'/assets/images/catalog/'+image" />
+        </mat-card>
+
+        <div class="small-carousel">
+            <div class="swiper-container" [swiper]="config">
+                <div class="swiper-wrapper">
+                    <div *ngFor="let image of product?.images" class="swiper-slide">
+                        <mat-card (click)="selectImage(image)" class="p-1">
+                            <img *ngIf="image" [src]="'/assets/images/catalog/'+image.small" class="swiper-lazy" />
+                            <div class="swiper-lazy-preloader"></div>
+                        </mat-card>
+                    </div>
+                </div>
+                <button mat-icon-button class="swiper-button-prev swipe-arrow">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+                <button mat-icon-button class="swiper-button-next swipe-arrow">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+        <!--<div #zoomViewer fxShow="false" fxShow.gt-md>
+            Aqui va el zoom de la imagen
+            <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"
+                [style.background-image]="makeTrustedImage(zoomImage)"></mat-card>
+        </div>-->
+
+        <h2>{{product?.name}}</h2>
+        <div class="py-1 lh">
+            <p><span class="text-muted fw-500">Categor&iacute;a:
+                </span><span>{{ product?.categoryId }}</span></p>
+            <p><span class="text-muted fw-500">Disponibilidad:
+                </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
+        </div>
+        <div class="py-1">
+            <app-rating [ratingsCount]="product?.ratingsCount" [ratingsValue]="product?.ratingsValue"
+                [direction]="'row'"></app-rating>
+        </div>
+        <p class="py-1 text-muted lh">{{product?.description}}</p>
+
+        <div class="divider mt-1"></div>
+        <h2 class="py-2 new-price">${{product?.newPrice}}</h2>
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
+            <div *ngIf="product?.color" class="color">
+                <span class="fw-500">Selecciona el Color:</span>
+                <button mat-raised-button *ngFor="let color of product?.color"
+                    [style.background]="color">&nbsp;</button>
+            </div>
+        </div>
+
+        <div class="py-1">
+            <app-controls [product]="product" [type]="'all'"></app-controls>
+        </div>
+
+        <div class="divider"></div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
+            <button mat-button>
+                <mat-icon>mail_outline</mat-icon> Compartelo a un Amigo
+            </button>
+            <button mat-icon-button>
+                <mat-icon>share</mat-icon>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div fxLayout="row wrap" class="mt-2">
+    <div fxFlex="100" fxFlex.gt-md="78" fxFlex.md="74">
+        <mat-card>
+            <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                <mat-tab label="Description">
+                    <div class="full-desc lh">
+                        <p>{{product?.detailDescription}}</p>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Additional information">
+                    <div class="full-desc lh">
+                        <p>{{product?.additionalInformation}}</p>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Reviews">
+                    <div class="full-desc lh">
+                        <mat-list class="reviews">
+                            <div *ngFor="let comentario of product?.comments">
+                                <mat-list-item class="h-100 py-1" >
+                                    <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image"
+                                        class="review-author">
+                                    <p matLine fxLayoutAlign="start center">
+                                        <span class="fw-500">Bruno Vespa</span>
+                                        <mat-icon class="text-muted px-1" matTooltip="{{comentario.rating}}"
+                                            matTooltipPosition="after">{{comentario.rating}}</mat-icon>
+                                    </p>
+                                    <p matLine class="text-muted"><small>{{comentario.creationDate | date:'yyyy-MM-dd HH:mm:ss'}}</small></p>
+                                    <p matLine class="text">{{comentario.comment}}</p>
+                                </mat-list-item>
+                            </div>
+                        </mat-list>
+
+                        <h3 class="mt-2">DEJA TU RESE&Ntilde;A</h3>
+                       <div class="divider"></div>
+                        <p class="mt-2 text-muted">Su direcci&oacute;n de correo electr&oacute;nico no ser&aacute; publicada. Los campos requeridos est&aacute;n marcados
+                            *</p>
+                        <h3 fxLayoutAlign="start center" class="mt-2">
+                            <span>Tu valoraci&oacute;n:</span>
+                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above">
+                                <mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above">
+                                <mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above">
+                                <mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above">
+                                <mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above">
+                                <mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon>
+                            </button>
+                        </h3>
+
+                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
+                            <div fxFlex="100" class="px-1 mt-1">
+                                <mat-form-field class="w-100">
+                                    <textarea matInput placeholder="Your review" formControlName="review"
+                                        required></textarea>
+                                    <mat-error *ngIf="form.controls.review.errors?.required">La rese&tilde;a es requerida
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
+                                <mat-form-field class="w-100">
+                                    <input matInput placeholder="Your name" formControlName="name" required>
+                                    <mat-error *ngIf="form.controls.name.errors?.required">Nombre es requerido</mat-error>
+                                    <mat-error *ngIf="form.controls.name.hasError('minlength')">El nombre no es lo suficientemente largo,
+                                        el m&iacute;nimo es de 4 caracteres</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
+                                <mat-form-field class="w-100">
+                                    <input matInput placeholder="Your email" formControlName="email" required>
+                                    <mat-error *ngIf="form.controls.email.errors?.required">El Email es requerido
+                                    </mat-error>
+                                    <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">El Email es Invalido</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100" class="mt-2 text-center w-100">
+                                <button mat-raised-button color="primary" type="submit">ENV&Iacute;AR RESE&Ntilde;A</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>
+
+<div class="py-2 mt-2">
+    <h2>Productos Destacados</h2>
+    <div class="divider"></div>
+    <app-products-carousel [products]="relatedProducts"></app-products-carousel>
+</div>

@@ -1,0 +1,57 @@
+<mat-card fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div fxFlex="100" fxFlex.gt-xs="33.3">
+        <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
+            <mat-icon color="primary" class="mat-icon-lg">home</mat-icon>
+            <h3 class="primary-text py-1">DIRECCI&Oacute;N :</h3>
+            <span class="text-muted">Carrera 11 No. 71 - 73 Of. 404</span>
+        </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-icon color="primary" class="mat-icon-lg">call</mat-icon>
+            <h3 class="primary-text py-1">TEL&Eacute;FONO :</h3>
+            <span class="text-muted">+(57) 1 743 3001</span>
+        </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-icon color="primary" class="mat-icon-lg">mail_outline</mat-icon>
+            <h3 class="primary-text py-1">E-MAIL :</h3>
+            <span class="text-muted">contacto@sophossolutions.com</span>
+        </div>
+    </div>
+    <div class="divider w-100 mt-2"></div>
+    <h3 class="w-100 text-center py-2">CONT&Aacute;CTANOS</h3>
+    
+    <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit(contactForm.value)" fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <mat-form-field class="w-100">
+              <input matInput placeholder="Nombre" formControlName="name" required>
+              <mat-error *ngIf="contactForm.controls.name.errors?.required">Nombre es requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <mat-form-field class="w-100">
+              <input matInput placeholder="Email" formControlName="email" required>
+              <mat-error *ngIf="contactForm.controls.email.errors?.required">Email es requerido</mat-error>
+              <mat-error *ngIf="contactForm.controls.email.hasError('invalidEmail')">Email invalido</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+          <mat-form-field class="w-100">
+              <input matInput placeholder="Tel&eacute;fono" formControlName="phone" required>
+              <mat-error *ngIf="contactForm.controls.phone.errors?.required">Tel&eacute;fono es requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100" class="px-1 mt-1">
+          <mat-form-field class="w-100">
+              <input matInput placeholder="Mensaje" formControlName="message" required>
+              <mat-error *ngIf="contactForm.controls.message.errors?.required">Mensaje es requerido</mat-error>
+          </mat-form-field>
+        </div> 
+        <div class="w-100 py-2 text-center">
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div> 
+    </form>
+
+</mat-card>

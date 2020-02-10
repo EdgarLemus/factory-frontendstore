@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: dev
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: 638238666448.dkr.ecr.us-east-1.amazonaws.com/frontend-store_sqa:beta
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "200m"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+          envFrom:
+          - configMapRef:
+              name: frontend-configmap
